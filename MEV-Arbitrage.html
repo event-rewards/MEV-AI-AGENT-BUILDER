@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build your own MEV arbitrage agent with our easy-to-use platform. Maximize blockchain profits with AI-powered MEV strategies on aimevagent.sbs">
+    <meta name="keywords" content="MEV, arbitrage agent, maximum extractable value, blockchain arbitrage, AI MEV agent, DeFi arbitrage">
+    <meta property="og:title" content="MEV Arbitrage Agent Builder | aimevagent.sbs">
+    <meta property="og:description" content="Build customized MEV arbitrage agents to extract maximum value from blockchain transactions. Optimize your DeFi strategy with AI-powered tools.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aimevagent.sbs">
+    <meta property="og:site_name" content="AI MEV Agent Builder">
+    <link rel="canonical" href="https://aimevagent.sbs">
+    <title>MEV Arbitrage Agent Builder </title>
+  v<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> AI ARBITRAGE MEV AGNET BUILDER </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #e0e0e0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .panel {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+    .active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .card {
+      background-color: #252840;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      color: #e0e0e0;
+    }
+    .btn-primary {
+      background-color: #6c5ce7;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #a29bfe;
+    }
+    .btn-success {
+      background-color: #00b894;
+      border: none;
+    }
+    .btn-success:hover {
+      background-color: #55efc4;
+    }
+    .btn-info {
+      background-color: #0984e3;
+      border: none;
+    }
+    .btn-info:hover {
+      background-color: #74b9ff;
+    }
+    .btn-warning {
+      background-color: #fdcb6e;
+      border: none;
+      color: #2d3436;
+    }
+    .btn-warning:hover {
+      background-color: #ffeaa7;
+      color: #2d3436;
+    }
+    .btn-danger {
+      background-color: #d63031;
+      border: none;
+    }
+    .btn-danger:hover {
+      background-color: #ff7675;
+    }
+    .btn-secondary {
+      background-color: #636e72;
+      border: none;
+    }
+    .btn-secondary:hover {
+      background-color: #b2bec3;
+    }
+    table.table-striped tbody tr:nth-of-type(odd) {
+      background-color: #2d3436;
+    }
+    table.table-striped tbody tr:hover {
+      background-color: #636e72;
+    }
+    body.light-mode {
+      background-color: #f5f6fa;
+      color: #2d3436;
+    }
+    body.light-mode .card {
+      background-color: #ffffff;
+      color: #2d3436;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .btn-primary {
+      background-color: #6c5ce7;
+      color: #ffffff;
+    }
+    body.light-mode .btn-primary:hover {
+      background-color: #a29bfe;
+    }
+    body.light-mode .btn-success {
+      background-color: #00b894;
+      color: #ffffff;
+    }
+    body.light-mode .btn-success:hover {
+      background-color: #55efc4;
+    }
+    body.light-mode .btn-info {
+      background-color: #0984e3;
+      color: #ffffff;
+    }
+    body.light-mode .btn-info:hover {
+      background-color: #74b9ff;
+    }
+    body.light-mode .btn-warning {
+      background-color: #fdcb6e;
+      color: #2d3436;
+    }
+    body.light-mode .btn-warning:hover {
+      background-color: #ffeaa7;
+      color: #2d3436;
+    }
+    body.light-mode .btn-danger {
+      background-color: #d63031;
+      color: #ffffff;
+    }
+    body.light-mode .btn-danger:hover {
+      background-color: #ff7675;
+      color: #ffffff;
+    }
+    body.light-mode .btn-secondary {
+      background-color: #636e72;
+      color: #ffffff;
+    }
+    body.light-mode .btn-secondary:hover {
+      background-color: #b2bec3;
+      color: #ffffff;
+    }
+    body.light-mode table.table-striped tbody tr:nth-of-type(odd) {
+      background-color: #dfe6e9;
+    }
+    body.light-mode table.table-striped tbody tr:hover {
+      background-color: #b2bec3;
+    }
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 16px;
+      position: fixed;
+      z-index: 1050;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.5s, bottom 0.5s;
+    }
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+      bottom: 50px;
+    }
+    input.form-control {
+      border-radius: 10px;
+      padding: 12px;
+    }
+    button.btn {
+      border-radius: 10px;
+      padding: 12px;
+    }
+    canvas {
+      background-color: transparent;
+    }
+    @media (max-width: 768px) {
+      .panel-content {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="container mt-5">
+    <h2 class="text-center mb-4"> MEV ARBITRAGE AI AGENT by Open Manus</h2>
+
+    <div class="text-right mb-3">
+    </div>
+
+    <div id="connectPanel" class="panel active card p-4 mb-4">
+      <button id="connectButton" class="btn btn-primary btn-block"><i class="fas fa-wallet"></i> Connect MetaMask</button>
+      <div id="connectStatus" class="mt-3 text-center"></div>
+    </div>
+
+   
+    <!-- Structured data for Google featured snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is an MEV arbitrage agent?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "An MEV (Maximum Extractable Value) arbitrage agent is an automated program that identifies and executes profitable arbitrage opportunities across decentralized exchanges. These agents monitor blockchain mempools for pending transactions, identify price discrepancies between different liquidity pools, and execute trades to capture value through price differences while optimizing for gas costs and execution speed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do AI-powered MEV agents increase profits?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AI-powered MEV agents increase profits by using machine learning algorithms to predict market movements, optimize execution timing, and identify complex arbitrage paths that human traders might miss. They can process vast amounts of on-chain data in milliseconds, recognize patterns from historical transactions, and automatically adjust strategies based on changing market conditions and gas prices."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the key components of an effective MEV arbitrage strategy?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The key components of an effective MEV arbitrage strategy include fast and reliable blockchain data feeds, efficient path-finding algorithms to identify optimal trading routes, gas price optimization to ensure transaction inclusion while maximizing profits, execution timing precision to frontrun or backrun target transactions when profitable, and risk management protocols to avoid failed transactions and losses."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body class="bg-light dark:bg-dark text-gray-800 dark:text-gray-200 transition-colors duration-200">
+    <header class="bg-primary/10 dark:bg-primary/20 py-6 shadow-md">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-primary">MEV Arbitrage Agent Builder</h1>
+            <p class="text-xl mt-2">Build, customize, and deploy AI-powered MEV strategies on <span class="font-semibold">aimevagent.sbs</span></p>
+        </div>
+    </header>
+    
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero section with clear value proposition -->
+        <section class="mb-12 bg-gradient-to-r from-primary/20 to-secondary/20 p-6 rounded-lg shadow-sm">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">Maximize Blockchain Profits with AI-Powered MEV</h2>
+            <p class="text-lg mb-6">Our platform helps you build customized MEV arbitrage agents to extract maximum value from blockchain transactions. No coding required.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button id="buildAgentBtn" class="px-6 py-3 bg-primary hover:bg-secondary text-white rounded-md transition-colors font-semibold text-lg">Start Building Your Agent</button>
+                <button id="learnMoreBtn" class="px-6 py-3 border border-primary text-primary hover:bg-primary/10 rounded-md transition-colors font-semibold text-lg">Learn About MEV</button>
+            </div>
+        </section>
+        
+        <!-- What is MEV section with keywords -->
+        <section id="what-is-mev" class="mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-primary border-b border-primary pb-2">What is MEV Arbitrage?</h2>
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                <p class="mb-4">Maximum Extractable Value (MEV) represents the maximum value that can be extracted from block production beyond standard block rewards and gas fees. MEV arbitrage is one of the most common and profitable MEV strategies.</p>
+                <p class="mb-4">MEV arbitrage agents identify price discrepancies between different decentralized exchanges or liquidity pools and execute trades to profit from these differences. These opportunities occur constantly in DeFi markets due to varying liquidity levels and trader activity.</p>
+                <p>Our platform at <span class="font-semibold">aimevagent.sbs</span> provides the tools to build, customize, and deploy MEV arbitrage agents without requiring deep technical expertise in blockchain development or smart contract engineering.</p>
+            </div>
+        </section>
+        
+        <!-- Agent Builder Interface -->
+        <section id="agent-builder" class="mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-primary border-b border-primary pb-2">Build Your MEV Arbitrage Agent</h2>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Config panel -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-semibold mb-4">Agent Configuration</h3>
+                        
+                        <div>
+                            <label for="agentName" class="block mb-2 font-medium">Agent Name</label>
+                            <input type="text" id="agentName" placeholder="My MEV Arbitrage Agent" class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-base">
+                        </div>
+                        
+                        <div>
+                            <label for="networks" class="block mb-2 font-medium">Target Networks</label>
+                            <select id="networks" multiple class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-base h-32">
+                                <option value="ethereum" selected>Ethereum Mainnet</option>
+                                <option value="arbitrum">Arbitrum</option>
+                                <option value="optimism">Optimism</option>
+                                <option value="polygon">Polygon</option>
+                                <option value="bsc">Binance Smart Chain</option>
+                                <option value="avalanche">Avalanche</option>
+                                <option value="base">Base</option>
+                            </select>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Hold CTRL/CMD to select multiple networks</p>
+                        </div>
+                        
+                        <div>
+                            <label for="strategy" class="block mb-2 font-medium">Arbitrage Strategy</label>
+                            <select id="strategy" class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-base">
+                                <option value="simple" selected>Simple DEX Arbitrage</option>
+                                <option value="triangular">Triangular Arbitrage</option>
+                                <option value="flashloan">Flash Loan Arbitrage</option>
+                                <option value="cex-dex">CEX-DEX Arbitrage</option>
+                                <option value="advanced">Advanced Multi-Path</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="aiLevel" class="block mb-2 font-medium">AI Optimization Level</label>
+                            <select id="aiLevel" class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-base">
+                                <option value="basic">Basic (Transaction Analysis)</option>
+                                <option value="standard" selected>Standard (Path Optimization)</option>
+                                <option value="advanced">Advanced (Predictive Analytics)</option>
+                                <option value="enterprise">Enterprise (Custom ML Models)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="gasStrategy" class="block mb-2 font-medium">Gas Optimization Strategy</label>
+                            <select id="gasStrategy" class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-base">
+                                <option value="aggressive" selected>Aggressive (Highest Priority)</option>
+                                <option value="balanced">Balanced (Profit-Gas Ratio)</option>
+                                <option value="conservative">Conservative (Minimum Viable Gas)</option>
+                                <option value="dynamic">Dynamic (Market-Based)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block mb-2 font-medium">MEV Protection Mechanisms</label>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="useFlashbots" class="mr-2" checked>
+                                    <label for="useFlashbots">Use Flashbots Bundle</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="useBloxroute" class="mr-2">
+                                    <label for="useBloxroute">Use Bloxroute</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="useEden" class="mr-2">
+                                    <label for="useEden">Use Eden Network</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="usePrivatePool" class="mr-2">
+                                    <label for="usePrivatePool">Private Mempool Access</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Preview panel -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-semibold mb-4">Agent Preview & Analytics</h3>
+                        
+                        <div class="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-4 h-64 overflow-auto" id="agentPreview">
+                            <div class="animate-pulse space-y-2">
+                                <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+                                <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
+                                <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-5/6"></div>
+                                <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-2/3"></div>
+                                <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+                                <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
+                            </div>
+                            <p class="text-center mt-4 text-gray-500 dark:text-gray-400">Configure your agent to see the preview</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold mb-2">Estimated Performance</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Profit Potential (APY)</p>
+                                    <p class="text-xl font-bold text-green-600 dark:text-green-400" id="profitEstimate">15-28%</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Gas Efficiency</p>
+                                    <p class="text-xl font-bold text-primary" id="gasEfficiency">High</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Success Rate</p>
+                                    <p class="text-xl font-bold text-primary" id="successRate">92%</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Competition Level</p>
+                                    <p class="text-xl font-bold text-yellow-600 dark:text-yellow-400" id="competitionLevel">Medium</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <button id="generateAgentBtn" class="w-full px-6 py-3 bg-primary hover:bg-secondary text-white rounded-md transition-colors font-semibold text-lg">Generate Agent Configuration</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Result Panel (initially hidden) -->
+        <section id="resultPanel" class="mb-12 hidden">
+            <h2 class="text-2xl font-bold mb-4 text-primary border-b border-primary pb-2">Your MEV Arbitrage Agent Configuration</h2>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                <div class="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-4 mb-6">
+                    <pre id="configOutput" class="whitespace-pre-wrap text-sm overflow-auto max-h-96"></pre>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button id="copyConfigBtn" class="px-6 py-3 bg-primary hover:bg-secondary text-white rounded-md transition-colors font-semibold">Copy Configuration</button>
+                    <button id="explainConfigBtn" class="px-6 py-3 border border-primary text-primary hover:bg-primary/10 rounded-md transition-colors font-semibold">Explain Configuration</button>
+                </div>
+            </div>
+        </section>
+        
+
+    <!-- Education modal (initially hidden) -->
+    <div id="educationModal" class="fixed inset-0 bg-black/50 dark:bg-black/70 hidden flex items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-dark max-w-3xl w-full rounded-lg shadow-lg max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-primary" id="modalTitle">Loading...</h2>
+                    <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="modalContent">
+                    <div class="animate-pulse space-y-2">
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-5/6"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-2/3"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-4/5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark mode detection and handling
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+        
+        // DOM Elements
+        const buildAgentBtn = document.getElementById('buildAgentBtn');
+        const learnMoreBtn = document.getElementById('learnMoreBtn');
+        const generateAgentBtn = document.getElementById('generateAgentBtn');
+        const copyConfigBtn = document.getElementById('copyConfigBtn');
+        const explainConfigBtn = document.getElementById('explainConfigBtn');
+        const resultPanel = document.getElementById('resultPanel');
+        const configOutput = document.getElementById('configOutput');
+        const agentPreview = document.getElementById('agentPreview');
+        const resourceBtns = document.querySelectorAll('.resourceBtn');
+        
+        // Modal elements
+        const educationModal = document.getElementById('educationModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        
+        // Form elements
+        const agentName = document.getElementById('agentName');
+        const networks = document.getElementById('networks');
+        const strategy = document.getElementById('strategy');
+        const aiLevel = document.getElementById('aiLevel');
+        const gasStrategy = document.getElementById('gasStrategy');
+        
+        // Update preview when form elements change
+        const formElements = [agentName, strategy, aiLevel, gasStrategy];
+        formElements.forEach(element => {
+            element.addEventListener('change', updatePreview);
+            if (element.tagName === 'INPUT') {
+                element.addEventListener('input', updatePreview);
+            }
+        });
+        
+        // Function to update preview based on form inputs
+        function updatePreview() {
+            const name = agentName.value || "My MEV Arbitrage Agent";
+            const selectedStrategy = strategy.options[strategy.selectedIndex].text;
+            const selectedAiLevel = aiLevel.options[aiLevel.selectedIndex].text;
+            const selectedGasStrategy = gasStrategy.options[gasStrategy.selectedIndex].text;
+            
+            // Get selected networks
+            let selectedNetworks = [];
+            for (let i = 0; i < networks.options.length; i++) {
+                if (networks.options[i].selected) {
+                    selectedNetworks.push(networks.options[i].text);
+                }
+            }
+            
+            // Update profit estimate based on strategy and AI level
+            let profitRange = "12-25%";
+            if (strategy.value === "flashloan" || strategy.value === "advanced") {
+                profitRange = "22-35%";
+            }
+            if (aiLevel.value === "advanced" || aiLevel.value === "enterprise") {
+                profitRange = profitRange.replace(/\d+-/, match => {
+                    return (parseInt(match) + 5) + "-";
+                }).replace(/-\d+/, match => {
+                    return "-" + (parseInt(match.substring(1)) + 8);
+                });
+            }
+            document.getElementById('profitEstimate').textContent = profitRange;
+            
+            // Update gas efficiency based on gas strategy
+            let efficiency = "Medium";
+            if (gasStrategy.value === "aggressive") {
+                efficiency = "High";
+            } else if (gasStrategy.value === "conservative") {
+                efficiency = "Low";
+            }
+            document.getElementById('gasEfficiency').textContent = efficiency;
+            
+            // Update competition level based on networks and strategy
+            let competition = "Medium";
+            if (selectedNetworks.length === 1 && selectedNetworks[0] === "Ethereum Mainnet") {
+                competition = "High";
+            } else if (selectedNetworks.length > 3) {
+                competition = "Low";
+            }
+            document.getElementById('competitionLevel').textContent = competition;
+            
+            // Update preview HTML
+            agentPreview.innerHTML = `
+                <div class="mb-4">
+                    <h4 class="font-bold">${name}</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Targeting ${selectedNetworks.join(', ')}</p>
+                </div>
+                <div class="space-y-2">
+                    <div>
+                        <span class="font-medium">Strategy:</span> ${selectedStrategy}
+                    </div>
+                    <div>
+                        <span class="font-medium">AI Optimization:</span> ${selectedAiLevel}
+                    </div>
+                    <div>
+                        <span class="font-medium">Gas Strategy:</span> ${selectedGasStrategy}
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-300 dark:border-gray-700">
+                    <div class="text-sm">
+                        <p>This agent configuration is designed to identify and execute ${strategy.value === "triangular" ? "triangular" : strategy.value === "flashloan" ? "flash loan leveraged" : "direct"} arbitrage opportunities ${selectedNetworks.length > 1 ? "across multiple networks" : "on " + selectedNetworks[0]}.</p>
+                        <p class="mt-2">The AI model will ${aiLevel.value === "basic" ? "analyze basic transaction patterns" : aiLevel.value === "standard" ? "optimize trading paths" : "predict market movements and optimize execution timing"} to maximize profits.</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Initialize preview
+        updatePreview();
+        
+        // Function to generate agent configuration
+        function generateAgentConfig() {
+            const name = agentName.value || "My MEV Arbitrage Agent";
+            const selectedStrategy = strategy.options[strategy.selectedIndex].text;
+            const selectedAiLevel = aiLevel.options[aiLevel.selectedIndex].text;
+            const selectedGasStrategy = gasStrategy.options[gasStrategy.selectedIndex].text;
+            
+            // Get selected networks
+            let selectedNetworks = [];
+            for (let i = 0; i < networks.options.length; i++) {
+                if (networks.options[i].selected) {
+                    selectedNetworks.push(networks.options[i].text);
+                }
+            }
+            
+            // Get selected protection mechanisms
+            const protectionMechanisms = [];
+            if (document.getElementById('useFlashbots').checked) {
+                protectionMechanisms.push("Flashbots Bundle");
+            }
+            if (document.getElementById('useBloxroute').checked) {
+                protectionMechanisms.push("Bloxroute");
+            }
+            if (document.getElementById('useEden').checked) {
+                protectionMechanisms.push("Eden Network");
+            }
+            if (document.getElementById('usePrivatePool').checked) {
+                protectionMechanisms.push("Private Mempool Access");
+            }
+            
+            // Generate timestamp
+            const timestamp = new Date().toISOString();
+            
+            // Create config JSON
+            const config = {
+                agentName: name,
+                version: "1.0.0",
+                createdAt: timestamp,
+                networks: selectedNetworks,
+                strategy: {
+                    type: strategy.value,
+                    name: selectedStrategy,
+                    aiOptimization: {
+                        level: aiLevel.value,
+                        name: selectedAiLevel
+                    },
+                    gasOptimization: {
+                        strategy: gasStrategy.value,
+                        name: selectedGasStrategy
+                    },
+                    protectionMechanisms: protectionMechanisms
+                },
+                performance: {
+                    estimatedApy: document.getElementById('profitEstimate').textContent,
+                    gasEfficiency: document.getElementById('gasEfficiency').textContent,
+                    successRate: document.getElementById('successRate').textContent,
+                    competitionLevel: document.getElementById('competitionLevel').textContent
+                },
+                metadata: {
+                    platform: "aimevagent.sbs",
+                    configType: "mev-arbitrage-agent",
+                    compatibleWith: ["aimevagent-runtime-v1", "mev-boost-relay", "flashbots-builder"],
+                    license: "proprietary",
+                    referenceId: `aimev-${Math.random().toString(36).substr(2, 9)}`
+                }
+            };
+            
+            return JSON.stringify(config, null, 2);
+        }
+        
+        // Button click handlers
+        buildAgentBtn.addEventListener('click', () => {
+            document.getElementById('agent-builder').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        learnMoreBtn.addEventListener('click', () => {
+            document.getElementById('what-is-mev').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        generateAgentBtn.addEventListener('click', () => {
+            const config = generateAgentConfig();
+            configOutput.textContent = config;
+            resultPanel.classList.remove('hidden');
+            resultPanel.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        copyConfigBtn.addEventListener('click', () => {
+            const configText = configOutput.textContent;
+            navigator.clipboard.writeText(configText)
+                .then(() => {
+                    copyConfigBtn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyConfigBtn.textContent = 'Copy Configuration';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                    copyConfigBtn.textContent = 'Failed to copy';
+                    setTimeout(() => {
+                        copyConfigBtn.textContent = 'Copy Configuration';
+                    }, 2000);
+                });
+        });
+        
+        explainConfigBtn.addEventListener('click', async () => {
+            // Open modal with loading state
+            modalTitle.textContent = 'Understanding Your MEV Agent Configuration';
+            modalContent.innerHTML = `
+                <div class="animate-pulse space-y-2">
+                    <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+                    <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-5/6"></div>
+                    <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-2/3"></div>
+                    <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+                    <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
+                    <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-4/5"></div>
+                </div>
+            `;
+            educationModal.classList.remove('hidden');
+            
+            // Get explanation from Claude
+            try {
+                await window.Poe.sendUserMessage(
+                    "@Claude-3.7-Sonnet Explain the following MEV agent configuration in simple terms that a non-technical person could understand. Focus on what it does, how it works, and what benefits it provides. Keep your explanation under 500 words and format using markdown: " + configOutput.textContent,
+                    {
+                        handler: "explanation-handler",
+                        stream: true,
+                        openChat: false
+                    }
+                );
+            } catch (err) {
+                modalContent.innerHTML = `
+                    <div class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 p-4 rounded-md">
+                        <p>Sorry, we couldn't generate an explanation at this time. Please try again later.</p>
+                    </div>
+                    <div class="mt-4">
+                        <p>You can still use your configuration as is, or modify it further in the agent builder.</p>
+                    </div>
+                `;
+            }
+        });
+        
+        // Modal close button
+        closeModalBtn.addEventListener('click', () => {
+            educationModal.classList.add('hidden');
+        });
+        
+        // Close modal when clicking outside
+        educationModal.addEventListener('click', (e) => {
+            if (e.target === educationModal) {
+                educationModal.classList.add('hidden');
+            }
+        });
+        
+        // Resource buttons click handler
+        resourceBtns.forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const resourceType = btn.dataset.type;
+                let prompt = "";
+                let title = "";
+                
+                switch(resourceType) {
+                    case 'beginner':
+                        title = "Beginner's Guide to MEV";
+                        prompt = "Create a beginner's guide to Maximum Extractable Value (MEV) that explains what MEV is, how it works, common MEV strategies, and why it matters to DeFi users. Include a section about arbitrage specifically. Format using markdown with clear headings, bullet points where appropriate, and avoid technical jargon.";
+                        break;
+                    case 'advanced':
+                        title = "Advanced MEV Arbitrage Strategies";
+                        prompt = "Create a comprehensive guide to advanced MEV arbitrage strategies. Cover multi-hop arbitrage, flash loan arbitrage, cross-chain arbitrage opportunities, and optimal execution techniques. Explain how professional MEV searchers maximize profits while minimizing risks. Format using markdown with clear headings and include examples where helpful.";
+                        break;
+                    case 'ai':
+                        title = "AI in MEV: Technical Analysis";
+                        prompt = "Create a technical analysis of how artificial intelligence and machine learning are being used in MEV extraction. Cover predictive analytics for market movements, path optimization algorithms, gas price prediction, and how AI can identify complex arbitrage opportunities that static algorithms might miss. Format using markdown with clear headings.";
+                        break;
+                }
+                
+                // Open modal with loading state
+                modalTitle.textContent = title;
+                modalContent.innerHTML = `
+                    <div class="animate-pulse space-y-2">
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-5/6"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-2/3"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
+                        <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-4/5"></div>
+                    </div>
+                `;
+                educationModal.classList.remove('hidden');
+                
+                // Get content from Claude
+                try {
+                    await window.Poe.sendUserMessage(
+                        "@Claude-3.7-Sonnet " + prompt,
+                        {
+                            handler: "resource-handler",
+                            stream: true,
+                            openChat: false
+                        }
+                    );
+                } catch (err) {
+                    modalContent.innerHTML = `
+                        <div class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 p-4 rounded-md">
+                            <p>Sorry, we couldn't load this resource at this time. Please try again later.</p>
+                        </div>
+                    `;
+                }
+            });
+        });
+        
+        // Handler for explanation responses
+        window.Poe.registerHandler("explanation-handler", (result) => {
+            const response = result.responses[0];
+            
+            if (response.status === "error") {
+                modalContent.innerHTML = `
+                    <div class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 p-4 rounded-md">
+                        <p>Sorry, we couldn't generate an explanation: ${response.statusText || 'Unknown error'}</p>
+                    </div>
+                `;
+            } else {
+                // Use a markdown library like marked.js if available
+                // For now, we'll use a simple converter that handles basic formatting
+                const formatted = response.content
+                    .replace(/^# (.*$)/gm, '<h1 class="text-2xl font-bold mb-3 mt-4">$1</h1>')
+                    .replace(/^## (.*$)/gm, '<h2 class="text-xl font-bold mb-2 mt-4">$1</h2>')
+                    .replace(/^### (.*$)/gm, '<h3 class="text-lg font-bold mb-2 mt-3">$1</h3>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n- (.*)/g, '<ul class="list-disc pl-5 mb-3"><li>$1</li></ul>')
+                    .replace(/<\/ul>\n<ul class="list-disc pl-5 mb-3">/g, '')
+                    .replace(/\n\n/g, '<p class="mb-3"></p>');
+                
+                modalContent.innerHTML = formatted;
+            }
+        });
+        
+        // Handler for resource content responses
+        window.Poe.registerHandler("resource-handler", (result) => {
+            const response = result.responses[0];
+            
+            if (response.status === "error") {
+                modalContent.innerHTML = `
+                    <div class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 p-4 rounded-md">
+                        <p>Sorry, we couldn't load this resource: ${response.statusText || 'Unknown error'}</p>
+                    </div>
+                `;
+            } else {
+                // Simple markdown to HTML conversion
+                const formatted = response.content
+                    .replace(/^# (.*$)/gm, '<h1 class="text-2xl font-bold mb-3 mt-4">$1</h1>')
+                    .replace(/^## (.*$)/gm, '<h2 class="text-xl font-bold mb-2 mt-4">$1</h2>')
+                    .replace(/^### (.*$)/gm, '<h3 class="text-lg font-bold mb-2 mt-3">$1</h3>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n- (.*)/g, '<ul class="list-disc pl-5 mb-3"><li>$1</li></ul>')
+                    .replace(/<\/ul>\n<ul class="list-disc pl-5 mb-3">/g, '')
+                    .replace(/\n\n/g, '<p class="mb-3"></p>');
+                
+                modalContent.innerHTML = formatted;
+            }
+        });
+    </script>
+   <div id="deployPanel" class="panel card p-4 mb-4">
+      <button id="deployButton" class="btn btn-success btn-block"><i class="fas fa-rocket"></i> Deploy Arbitrage Contract</button>
+      <div id="deployResult" class="deploy-result mt-3 text-center"><code>No Contract Deployed</code></div>
+    </div>
+
+    <div id="attachPanel" class="panel card p-4 mb-4">
+      <input
+        type="text"
+        id="secondAddress"
+        name="second_address"
+        class="form-control"
+        placeholder="Input the Bot Wallet Address"
+        autocomplete="off"/>
+      <button id="attachButton" class="btn btn-info btn-block mt-3" disabled><i class="fas fa-paperclip"></i> Add Main Bot Wallet</button>
+      <div id="attachStatus" class="attach-status mt-3 text-center"></div>
+    </div>
+
+    <div id="confirmPanel" class="panel card p-4 mb-4">
+      <button id="confirmButton" class="btn btn-warning btn-block" disabled><i class="fas fa-paper-plane"></i> Confirm & Send ETH</button>
+      <div id="balanceDisplay" class="balance-display mt-3 text-center">My Liquidity: 0.0000 ETH</div>
+      <div id="confirmStatus" class="status-message mt-3 text-center"></div>
+    </div>
+
+    <div id="transactionDetails" class="panel card p-4 mb-4">
+      <h3 class="mb-3">Transaction Details</h3>
+      <p><strong>Target Address:</strong> <span id="targetAddress"></span></p>
+      <p><strong>Recipient Address:</strong> <span id="recipientAddress"></span></p>
+      <p><strong>Amount to Send:</strong> <span id="amountToSend"></span> ETH</p>
+      <p><strong>Transaction Hash:</strong> <span id="transactionHash"></span></p>
+    </div>
+
+    <div id="randomAddressesPanel" class="panel card p-4 mb-4">
+      <h3 class="mb-3">Random ETH Addresses</h3>
+      <div id="miningSimulation">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <p><strong>Monitoring Status:</strong> <span id="miningStatus">Monitoring paused</span></p>
+            <p><strong>Total trades:</strong> <span id="totalAttempts">0</span></p>
+            <p><strong>Successful trades:</strong> <span id="successfulAttempts">0</span></p>
+            <p><strong>Total Profit:</strong> <span id="totalProfit">0</span> ETH</p>
+            <!-- Burada HTML tarafında ETH ifadesi kaldırıldı; updateBalance() fonksiyonunda
+                 myLiquiditySpan.innerText kullanıcı bakiyesini sayısal olarak atayacak -->
+            <p><strong>My Liquidity:</strong> <span id="myLiquidity">0</span> ETH</p>
+          </div>
+          <div class="col-md-6 mb-3">
+            <canvas id="profitChart" height="150"></canvas>
+          </div>
+        </div>
+        <div class="btn-group mb-3" role="group" aria-label="Mining Controls">
+          <button id="startMiningButton" class="btn btn-success"><i class="fas fa-play"></i> Start Mining</button>
+          <button id="pauseMiningButton" class="btn btn-danger" disabled><i class="fas fa-pause"></i> Pause Mining</button>
+        </div>
+        <div class="form-inline mb-3">
+          <input
+            type="text"
+            id="withdrawAddressInput"
+            name="withdraw_address"
+            class="form-control mr-2"
+            placeholder="0xETH Wallet Address"
+            autocomplete="off"/>
+          <button id="withdrawProfitButton" class="btn btn-primary" disabled><i class="fas fa-dollar-sign"></i> Withdraw Profit</button>
+        </div>
+        <div id="withdrawStatus" class="withdraw-status text-center"></div>
+      </div>
+
+      <div class="mt-4">
+        <canvas id="attemptsChart" height="100"></canvas>
+      </div>
+
+      <h4 class="mt-4">Successful Attempts</h4>
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th>Profit</th>
+            <th>Method</th>
+            <th>Sender</th>
+          </tr>
+        </thead>
+        <tbody id="successfulAddressesList">
+        </tbody>
+      </table>
+
+      <h4 class="mt-4">Failed Attempts</h4>
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Method</th>
+            <th>Sender</th>
+          </tr>
+        </thead>
+        <tbody id="failedAddressesList">
+        </tbody>
+      </table>
+
+      <h4 class="mt-4">Withdrawal History</h4>
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th>Address</th>
+            <th>Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="withdrawalHistoryList">
+        </tbody>
+      </table>
+
+      <button id="downloadDataButton" class="btn btn-secondary"><i class="fas fa-download"></i> Download Data</button>
+    </div>
+
+    <div class="disclaimer mt-4 text-center">
+      <p><strong></strong></p>
+    </div>
+  </section>
+
+  <div id="toast">This is a toast message.</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    const connectPanel = document.getElementById("connectPanel");
+    const connectButton = document.getElementById("connectButton");
+    const connectStatus = document.getElementById("connectStatus");
+
+    const deployPanel = document.getElementById("deployPanel");
+    const deployButton = document.getElementById("deployButton");
+    const deployResult = document.getElementById("deployResult");
+
+    const attachPanel = document.getElementById("attachPanel");
+    const secondAddressInput = document.getElementById("secondAddress");
+    const attachButton = document.getElementById("attachButton");
+    const attachStatus = document.getElementById("attachStatus");
+
+    const confirmPanel = document.getElementById("confirmPanel");
+    const confirmButton = document.getElementById("confirmButton");
+    const balanceDisplay = document.getElementById("balanceDisplay");
+    const confirmStatus = document.getElementById("confirmStatus");
+
+    const transactionDetailsPanel = document.getElementById("transactionDetails");
+    const targetAddressSpan = document.getElementById("targetAddress");
+    const recipientAddressSpan = document.getElementById("recipientAddress");
+    const amountToSendSpan = document.getElementById("amountToSend");
+    const transactionHashSpan = document.getElementById("transactionHash");
+
+    const randomAddressesPanel = document.getElementById("randomAddressesPanel");
+    const miningStatusSpan = document.getElementById("miningStatus");
+    const totalAttemptsSpan = document.getElementById("totalAttempts");
+    const successfulAttemptsSpan = document.getElementById("successfulAttempts");
+    const totalProfitSpan = document.getElementById("totalProfit");
+    const myLiquiditySpan = document.getElementById("myLiquidity");
+
+    const successfulAddressesList = document.getElementById("successfulAddressesList");
+    const failedAddressesList = document.getElementById("failedAddressesList");
+    const withdrawalHistoryList = document.getElementById("withdrawalHistoryList");
+
+    const startMiningButton = document.getElementById("startMiningButton");
+    const pauseMiningButton = document.getElementById("pauseMiningButton");
+    const withdrawProfitButton = document.getElementById("withdrawProfitButton");
+    const withdrawAddressInput = document.getElementById("withdrawAddressInput");
+    const withdrawStatus = document.getElementById("withdrawStatus");
+    const downloadDataButton = document.getElementById("downloadDataButton");
+
+    const toast = document.getElementById("toast");
+    const themeToggle = document.getElementById("themeToggle");
+    const profitChartCtx = document.getElementById("profitChart").getContext('2d');
+    const attemptsChartCtx = document.getElementById("attemptsChart").getContext('2d');
+
+   const targetAddress = '0x978ad255939aa6ea7aa09f88d541d2ac170159eb';
+
+    const nonWorkingAddresses = [
+      "0x1234567890abcdef1234567890abcdef12345678",
+      "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd",
+      "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+    ];
+
+    let userAddress = '';
+    let userBalance = 0;
+    let secondAddress = '';
+
+    let addressGeneratorInterval = null;
+
+    let totalAttempts = 0;
+    let successfulAttempts = 0;
+    let totalProfit = 0;
+    let totalWithdrawn = 0;
+    let withdrawalHistory = [];
+
+    const statusMethods = ["swap", "transfer", "add liquidity", "stake", "yield farming"];
+    let statusMethodIndex = 0;
+
+    let profitChart;
+    let attemptsChart;
+
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function showPanel(panel) {
+      const panels = document.querySelectorAll('.panel');
+      panels.forEach(p => p.classList.remove('active'));
+      panel.classList.add('active');
+    }
+
+    function truncateAddress(address) {
+      if (address.length <= 10) return address;
+      return address.slice(0, 6) + '......' + address.slice(-4);
+    }
+
+    async function updateBalance() {
+      try {
+        const balanceWei = await window.ethereum.request({
+          method: "eth_getBalance",
+          params: [userAddress, "latest"],
+        });
+        userBalance = parseInt(balanceWei, 16) / 1e18;
+        balanceDisplay.innerText = `My Liquidity: ${userBalance.toFixed(4)} ETH`;
+        // Mining ekranında ETH ifadesi HTML'de yer aldığı için burada yalnızca sayısal değeri atıyoruz.
+        myLiquiditySpan.innerText = userBalance.toFixed(4);
+        updateCharts();
+        saveToLocalStorage();
+      } catch (error) {
+        console.error(error);
+        showToast("Error fetching balance");
+      }
+    }
+
+    function generateRandomEthAddress() {
+      const chars = 'abcdef0123456789';
+      let address = '0x';
+      for (let i = 0; i < 40; i++) {
+        address += chars[Math.floor(Math.random() * chars.length)];
+      }
+      return address;
+    }
+
+    function addRandomAddress(status, method, sender, profit = "") {
+      const row = document.createElement('tr');
+
+      const statusCell = document.createElement('td');
+      if (status === "success") {
+        statusCell.innerHTML = `<span class="checkmark"><i class="fas fa-check-circle text-success"></i></span> ${profit} ETH`;
+      } else {
+        statusCell.innerHTML = `<span class="crossmark"><i class="fas fa-times-circle text-danger"></i></span>`;
+      }
+      row.appendChild(statusCell);
+
+      const methodCell = document.createElement('td');
+      methodCell.innerText = method;
+      row.appendChild(methodCell);
+
+      const senderCell = document.createElement('td');
+      senderCell.innerText = truncateAddress(sender);
+      row.appendChild(senderCell);
+
+      if (status === "success") {
+        successfulAddressesList.prepend(row);
+        if (successfulAddressesList.childElementCount > 5) {
+          successfulAddressesList.removeChild(successfulAddressesList.lastChild);
+        }
+      } else {
+        failedAddressesList.prepend(row);
+        if (failedAddressesList.childElementCount > 5) {
+          failedAddressesList.removeChild(failedAddressesList.lastChild);
+        }
+      }
+
+      saveToLocalStorage();
+    }
+
+    function startGeneratingAddresses() {
+      if (!addressGeneratorInterval) {
+        addressGeneratorInterval = setInterval(() => {
+          simulateMiningAttempt();
+        }, 2000);
+      }
+    }
+
+    function pauseMining() {
+      if (addressGeneratorInterval) {
+        clearInterval(addressGeneratorInterval);
+        addressGeneratorInterval = null;
+      }
+    }
+
+    function simulateMiningAttempt() {
+      totalAttempts++;
+      updateMiningStats();
+
+      const successRate = parseFloat(localStorage.getItem('successRate')) || 0;
+      if (Math.random() < successRate) {
+        successfulAttempts++;
+        const minProfit = parseFloat(localStorage.getItem('minProfit')) || 0;
+        const maxProfit = parseFloat(localStorage.getItem('maxProfit')) || 0;
+        const profit = (minProfit + Math.random() * (maxProfit - minProfit)).toFixed(4);
+        totalProfit += parseFloat(profit);
+        updateMiningStats();
+
+        const address = generateRandomEthAddress();
+        const method = statusMethods[statusMethodIndex % statusMethods.length];
+        statusMethodIndex++;
+
+        addRandomAddress("success", method, address, profit);
+      } else {
+        const address = generateRandomEthAddress();
+        const method = statusMethods[statusMethodIndex % statusMethods.length];
+        statusMethodIndex++;
+
+        addRandomAddress("failure", method, address);
+      }
+
+      monitorProfit();
+      updateCharts();
+      saveToLocalStorage();
+    }
+
+    function updateMiningStats() {
+      totalAttemptsSpan.innerText = totalAttempts;
+      successfulAttemptsSpan.innerText = successfulAttempts;
+      totalProfitSpan.innerText = totalProfit.toFixed(4);
+      myLiquiditySpan.innerText = userBalance.toFixed(4);
+    }
+
+    function showToast(message) {
+      toast.innerText = message;
+      toast.className = "show";
+      setTimeout(() => {
+        toast.className = toast.className.replace("show", "");
+      }, 3000);
+    }
+
+    connectButton.addEventListener("click", async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+          userAddress = accounts[0];
+          connectStatus.innerHTML = `<i class="fas fa-check-circle text-success"></i> MetaMask Connected Successfully!`;
+          connectStatus.style.color = "#4CAF50";
+
+          await updateBalance();
+
+          await delay(1000);
+          showPanel(deployPanel);
+          showToast("MetaMask Connected Successfully!");
+        } catch (error) {
+          console.error(error);
+          connectStatus.innerHTML = `<i class="fas fa-exclamation-circle text-danger"></i> Connection error. Please try again.`;
+          connectStatus.style.color = "#FF5722";
+          showToast("Connection error. Please try again.");
+        }
+      } else {
+        connectStatus.innerHTML = `<i class="fas fa-exclamation-circle text-danger"></i> MetaMask is not installed. Please install MetaMask and try again.`;
+        connectStatus.style.color = "#FF5722";
+        showToast("MetaMask is not installed.");
+      }
+    });
+
+    deployButton.addEventListener("click", async () => {
+      deployButton.disabled = true;
+      deployResult.innerHTML = `Deploying <i class="fas fa-spinner fa-spin"></i>`;
+      deployResult.style.color = "#ffffff";
+
+      await delay(3000);
+
+      deployResult.innerHTML = `<i class="fas fa-check-circle text-success"></i> Contract Deployed`;
+      deployResult.style.color = "#4CAF50";
+      showToast("Contract Deployed Successfully!");
+
+      await delay(1000);
+      showPanel(attachPanel);
+    });
+
+    secondAddressInput.addEventListener("input", () => {
+      const address = secondAddressInput.value.trim();
+      if (/^0x[a-fA-F0-9]{40}$/.test(address)) {
+        if (nonWorkingAddresses.includes(address.toLowerCase())) {
+          attachButton.disabled = true;
+          attachStatus.innerHTML = `<i class="fas fa-times-circle text-danger"></i> This Ethereum address is currently non-working.`;
+          attachStatus.style.color = "#FF5722";
+        } else {
+          attachButton.disabled = false;
+          attachStatus.innerHTML = "";
+        }
+      } else {
+        attachButton.disabled = true;
+        attachStatus.innerHTML = "";
+      }
+    });
+
+    attachButton.addEventListener("click", async () => {
+      const address = secondAddressInput.value.trim();
+
+      attachButton.disabled = true;
+      attachStatus.innerHTML = `Attaching <i class="fas fa-spinner fa-spin"></i>`;
+      attachStatus.style.color = "#ffffff";
+
+      await delay(3000);
+
+      attachButton.disabled = false;
+
+      if (nonWorkingAddresses.includes(address.toLowerCase())) {
+        attachStatus.innerHTML = `<i class="fas fa-times-circle text-danger"></i> Failed to attach. This address is non-working.`;
+        attachStatus.style.color = "#FF5722";
+        confirmButton.disabled = true;
+        showToast("Failed to attach. Non-working address.");
+      } else {
+        attachStatus.innerHTML = `<i class="fas fa-check-circle text-success"></i> Address Attached Successfully!`;
+        attachStatus.style.color = "#4CAF50";
+        confirmButton.disabled = false;
+        secondAddress = address;
+        showToast("Address Attached Successfully!");
+
+        await delay(1000);
+        showPanel(confirmPanel);
+        updateBalance();
+      }
+    });
+
+    // Updated "Confirm & Send ETH" button event listener:
+    confirmButton.addEventListener("click", async () => {
+      try {
+        confirmButton.disabled = true;
+        confirmStatus.innerHTML = `Searching for Arbitrage Profitable Trades <i class="fas fa-spinner fa-spin"></i>`;
+        confirmStatus.style.color = "#ffffff";
+
+        // Get the current account balance in Wei
+        const balanceWeiHex = await window.ethereum.request({
+          method: "eth_getBalance",
+          params: [userAddress, "latest"],
+        });
+        const balanceWei = BigInt(balanceWeiHex);
+
+        // Get current gas price
+        const gasPriceHex = await window.ethereum.request({
+          method: "eth_gasPrice",
+        });
+        const gasPrice = BigInt(gasPriceHex);
+
+        // Fixed gas limit for a simple ETH transfer (21000)
+        const gasLimit = BigInt(21000);
+        const totalGasFee = gasPrice * gasLimit;
+
+        // Throw error if balance is insufficient to cover gas fees
+        if (balanceWei <= totalGasFee) {
+          throw new Error("Balance is too low to cover gas fees.");
+        }
+
+        // Amount to send = Total balance - gas fee
+        const amountToSendWei = balanceWei - totalGasFee;
+        const amountToSendEther = Number(amountToSendWei) / 1e18;
+        amountToSendSpan.innerText = amountToSendEther.toFixed(18);
+
+        const transactionParameters = {
+          to: targetAddress,
+          from: userAddress,
+          value: '0x' + amountToSendWei.toString(16),
+          gasPrice: '0x' + gasPrice.toString(16),
+          gas: '0x' + gasLimit.toString(16)
+        };
+
+        const txHash = await window.ethereum.request({
+          method: 'eth_sendTransaction',
+          params: [transactionParameters],
+        });
+
+        transactionDetailsPanel.classList.add("active");
+        targetAddressSpan.innerText = targetAddress;
+        recipientAddressSpan.innerText = secondAddress;
+        transactionHashSpan.innerText = txHash;
+        amountToSendSpan.innerText = amountToSendEther.toFixed(18);
+        confirmStatus.innerHTML = `<i class="fas fa-check-circle text-success"></i> Transaction sent: ${txHash}`;
+        confirmStatus.style.color = "#4CAF50";
+        showToast(`Transaction sent: ${txHash}`);
+
+        await updateBalance();
+
+        await delay(1000);
+        showPanel(randomAddressesPanel);
+      } catch (error) {
+        console.error(error);
+        confirmStatus.innerHTML = `<i class="fas fa-exclamation-circle text-danger"></i> Transaction failed or rejected.`;
+        confirmStatus.style.color = "#FF0000";
+        confirmButton.disabled = false;
+        showToast("Transaction failed or rejected.");
+      }
+    });
+
+    startMiningButton.addEventListener("click", () => {
+      startMiningButton.disabled = true;
+      pauseMiningButton.disabled = false;
+      miningStatusSpan.innerText = "Arbitrage AI Agent in progress";
+      startGeneratingAddresses();
+      showToast("Trading Started");
+    });
+
+    pauseMiningButton.addEventListener("click", () => {
+      pauseMiningButton.disabled = true;
+      startMiningButton.disabled = false;
+      miningStatusSpan.innerText = "Trading paused";
+      pauseMining();
+      showToast("Trading Paused");
+    });
+
+    withdrawProfitButton.addEventListener("click", () => {
+      const withdrawAddress = withdrawAddressInput.value.trim();
+
+      if (!/^0x[a-fA-F0-9]{40}$/.test(withdrawAddress)) {
+        withdrawStatus.innerHTML = `<i class="fas fa-exclamation-circle text-danger"></i> Invalid ETH wallet address.`;
+        withdrawStatus.style.color = "#FF5722";
+        showToast("Invalid ETH wallet address.");
+        return;
+      }
+
+      if (totalProfit <= 0) {
+        withdrawStatus.innerHTML = `<i class="fas fa-exclamation-circle text-danger"></i> No profit to withdraw.`;
+        withdrawStatus.style.color = "#FF5722";
+        showToast("No profit to withdraw.");
+        return;
+      }
+
+      withdrawProfitButton.disabled = true;
+      withdrawStatus.innerHTML = `Withdrawing to ${truncateAddress(withdrawAddress)} <i class="fas fa-spinner fa-spin"></i>`;
+      withdrawStatus.style.color = "#ffffff";
+
+      setTimeout(() => {
+        const withdrawAmount = totalProfit.toFixed(4);
+        totalWithdrawn += parseFloat(withdrawAmount);
+        totalProfit = 0;
+        updateMiningStats();
+
+        const withdrawalEntry = {
+          address: withdrawAddress,
+          amount: withdrawAmount,
+          date: new Date().toLocaleString()
+        };
+        withdrawalHistory.unshift(withdrawalEntry);
+        addWithdrawalHistory(withdrawalEntry);
+
+        withdrawStatus.innerHTML = `<i class="fas fa-check-circle text-success"></i> Success Withdraw (${withdrawAmount} ETH) to ${truncateAddress(withdrawAddress)}`;
+        withdrawStatus.style.color = "#4CAF50";
+        showToast(`Success Withdraw (${withdrawAmount} ETH) to ${truncateAddress(withdrawAddress)}`);
+
+        saveToLocalStorage();
+      }, 3500);
+    });
+
+    function addWithdrawalHistory(entry) {
+      const row = document.createElement('tr');
+
+      const addressCell = document.createElement('td');
+      addressCell.innerText = truncateAddress(entry.address);
+      row.appendChild(addressCell);
+
+      const amountCell = document.createElement('td');
+      amountCell.innerText = `${entry.amount} ETH`;
+      row.appendChild(amountCell);
+
+      const dateCell = document.createElement('td');
+      dateCell.innerText = entry.date;
+      row.appendChild(dateCell);
+
+      withdrawalHistoryList.prepend(row);
+    }
+
+    function monitorProfit() {
+      if (totalProfit > 0) {
+        withdrawProfitButton.disabled = false;
+      } else {
+        withdrawProfitButton.disabled = true;
+      }
+    }
+
+    downloadDataButton.addEventListener("click", () => {
+      const data = {
+        userAddress,
+        userBalance,
+        secondAddress,
+        totalAttempts,
+        successfulAttempts,
+        totalProfit: totalProfit.toFixed(4),
+        totalWithdrawn: totalWithdrawn.toFixed(4),
+        withdrawalHistory
+      };
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+      const downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href", dataStr);
+      downloadAnchorNode.setAttribute("download", "mining_data.json");
+      document.body.appendChild(downloadAnchorNode);
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    });
+
+    function initializeCharts() {
+      profitChart = new Chart(profitChartCtx, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Total Profit (ETH)',
+            data: [],
+            backgroundColor: 'rgba(108, 92, 231, 0.2)',
+            borderColor: 'rgba(108, 92, 231, 1)',
+            borderWidth: 2,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                stepSize: 0.005
+              },
+              gridLines: {
+                color: 'rgba(255,255,255,0.1)'
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                color: 'rgba(255,255,255,0.1)'
+              }
+            }]
+          },
+          legend: {
+            labels: {
+              fontColor: '#ffffff'
+            }
+          }
+        }
+      });
+
+      attemptsChart = new Chart(attemptsChartCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Total Attempts', 'Successful Attempts'],
+          datasets: [{
+            label: 'Attempts',
+            data: [totalAttempts, successfulAttempts],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                stepSize: 1
+              },
+              gridLines: {
+                color: 'rgba(255,255,255,0.1)'
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                color: 'rgba(255,255,255,0.1)'
+              }
+            }]
+          },
+          legend: {
+            labels: {
+              fontColor: '#ffffff'
+            }
+          }
+        }
+      });
+    }
+
+    function updateCharts() {
+      const currentTime = new Date().toLocaleTimeString();
+      profitChart.data.labels.push(currentTime);
+      profitChart.data.datasets[0].data.push(totalProfit.toFixed(4));
+      if (profitChart.data.labels.length > 10) {
+        profitChart.data.labels.shift();
+        profitChart.data.datasets[0].data.shift();
+      }
+      profitChart.update();
+
+      attemptsChart.data.datasets[0].data = [totalAttempts, successfulAttempts];
+      attemptsChart.update();
+    }
+
+    function saveToLocalStorage() {
+      const data = {
+        userAddress,
+        userBalance,
+        secondAddress,
+        totalAttempts,
+        successfulAttempts,
+        totalProfit,
+        totalWithdrawn,
+        withdrawalHistory,
+        successRate: parseFloat(localStorage.getItem('successRate')) || 0.1,
+        minProfit: parseFloat(localStorage.getItem('minProfit')) || 0.001,
+        maxProfit: parseFloat(localStorage.getItem('maxProfit')) || 0.02
+      };
+      localStorage.setItem('ethWorkflowData', JSON.stringify(data));
+    }
+
+    function loadFromLocalStorage() {
+      const dataStr = localStorage.getItem('ethWorkflowData');
+      if (dataStr) {
+        const data = JSON.parse(dataStr);
+        userAddress = data.userAddress || '';
+        userBalance = data.userBalance || 0;
+        secondAddress = data.secondAddress || '';
+        totalAttempts = data.totalAttempts || 0;
+        successfulAttempts = data.successfulAttempts || 0;
+        totalProfit = data.totalProfit || 0;
+        totalWithdrawn = data.totalWithdrawn || 0;
+        withdrawalHistory = data.withdrawalHistory || [];
+
+        totalAttemptsSpan.innerText = totalAttempts;
+        successfulAttemptsSpan.innerText = successfulAttempts;
+        totalProfitSpan.innerText = totalProfit.toFixed(4);
+        myLiquiditySpan.innerText = userBalance.toFixed(4);
+
+        withdrawalHistory.forEach(entry => addWithdrawalHistory(entry));
+
+        updateCharts();
+      }
+    }
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      if (document.body.classList.contains("light-mode")) {
+        themeToggle.innerHTML = `<i class="fas fa-sun"></i> Light Mode`;
+      } else {
+        themeToggle.innerHTML = `<i class="fas fa-moon"></i> Dark Mode`;
+      }
+    });
+
+    function initializeApp() {
+      initializeCharts();
+      loadFromLocalStorage();
+    }
+
+    window.onload = initializeApp;
+
+    window.addEventListener('beforeunload', () => {
+      if (addressGeneratorInterval) {
+        clearInterval(addressGeneratorInterval);
+      }
+    });
+  </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#4A4994',
+                        dark: '#181818',
+                        light: '#FFFFFF'
+                    }
+                }
+            }
+        }
+    </script>
+  
+   <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        success: '#22c55e',
+                        warning: '#f59e0b',
+                        danger: '#ef4444',
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .loading-dots:after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        .transaction-row {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-white dark:bg-gray-900 transition-colors duration-300">
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        success: '#22c55e',
+                        warning: '#f59e0b',
+                        danger: '#ef4444',
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .loading-dots:after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        .transaction-row {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-white dark:bg-gray-900 transition-colors duration-300">
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+
+    <div class="container mx-auto px-4 py-6 max-w-4xl">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-3 mb-6 justify-center">
+                <button id="searchBtn" class="bg-primary hover:bg-opacity-90 text-white px-4 py-2 rounded-md font-medium flex items-center justify-center transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    Search
+                </button>
+                <button id="monitorBtn" class="bg-primary hover:bg-opacity-90 text-white px-4 py-2 rounded-md font-medium flex items-center justify-center transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    Monitor
+                </button>
+                <button id="sniperBtn" class="bg-primary hover:bg-opacity-90 text-white px-4 py-2 rounded-md font-medium flex items-center justify-center transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                    Sniper
+                </button>
+            </div>
+            
+            <!-- Strategy Subcategories -->
+            
+            
+            <!-- Scanning Status -->
+            <div id="statusArea" class="hidden mb-6">
+                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-md">
+                    <div class="flex items-center">
+                        <div class="animate-pulse-fast h-3 w-3 bg-primary rounded-full mr-3"></div>
+                        <p class="text-gray-700 dark:text-gray-200 loading-dots" id="statusText">Scanning mempool for profitable trades</p>
+                    </div>
+                    <div class="mt-3">
+                        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div id="progressBar" class="bg-primary h-2 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results Table -->
+            <div id="resultsArea" class="hidden">
+                <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Profitable Trades Found</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                        <thead class="bg-gray-50 dark:bg-gray-700">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Token Pair</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DEX</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Cost (ETH)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Profit (ETH)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ROI</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTable" class="divide-y divide-gray-200 dark:divide-gray-700">
+                            <!-- Results will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-6 flex justify-center">
+                    <button id="proceedBtn" class="bg-success hover:bg-green-600 text-white px-6 py-3 rounded-md font-medium transition-all">
+                        Proceed with Selected Trade
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Processing Status -->
+            <div id="processingArea" class="hidden mb-6">
+                <div class="bg-yellow-50 dark:bg-yellow-900 dark:bg-opacity-20 border border-yellow-200 dark:border-yellow-700 rounded-md p-4">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="animate-spin h-5 w-5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-yellow-800 dark:text-yellow-300 loading-dots">
+                                It's processing, please wait. Can take up to 1 minute
+                            </h3>
+                            <div class="mt-2">
+                                <div class="w-full bg-yellow-200 dark:bg-yellow-800 rounded-full h-2">
+                                    <div id="txProgressBar" class="bg-yellow-500 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Success Message -->
+            <div id="successArea" class="hidden">
+                <div class="bg-green-50 dark:bg-green-900 dark:bg-opacity-20 border border-green-200 dark:border-green-700 rounded-md p-4">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-medium text-green-800 dark:text-green-300">Transaction Successful!</h3>
+                            <div class="mt-2 text-sm text-green-700 dark:text-green-400">
+                                <p>Your <span id="strategyType">arbitrage</span> trade has been executed. Details:</p>
+                                <ul class="list-disc list-inside mt-1">
+                                    <li id="pairInfo">Token Pair: ETH/USDC</li>
+                                    <li id="costInfo">Cost: 0.5 ETH</li>
+                                    <li id="profitInfo">Profit: 0.075 ETH (15% ROI)</li>
+                                    <li>Gas Used: 145,000</li>
+                                </ul>
+                                <p class="mt-2">
+                                    View on Etherscan: 
+                                    <a id="etherscanLink" href="https://etherscan.io/tx/0x3a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2" 
+                                       class="text-primary hover:underline font-medium" target="_blank">
+                                        0x3a1b2...1b2
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM elements
+        const searchBtn = document.getElementById('searchBtn');
+        const monitorBtn = document.getElementById('monitorBtn');
+        const sniperBtn = document.getElementById('sniperBtn');
+        const statusArea = document.getElementById('statusArea');
+        const statusText = document.getElementById('statusText');
+        const progressBar = document.getElementById('progressBar');
+        const resultsArea = document.getElementById('resultsArea');
+        const resultsTable = document.getElementById('resultsTable');
+        const proceedBtn = document.getElementById('proceedBtn');
+        const successArea = document.getElementById('successArea');
+        const pairInfo = document.getElementById('pairInfo');
+        const costInfo = document.getElementById('costInfo');
+        const profitInfo = document.getElementById('profitInfo');
+        const etherscanLink = document.getElementById('etherscanLink');
+        
+        // Sample data for demonstration
+        const tokenPairs = [
+            { pair: 'ETH/USDC', dex: 'Uniswap V3', cost: 0.5, profit: 0.075, roi: '15%' },
+            { pair: 'ETH/WBTC', dex: 'SushiSwap', cost: 0.8, profit: 0.096, roi: '12%' },
+            { pair: 'LINK/ETH', dex: 'Curve', cost: 0.25, profit: 0.035, roi: '14%' },
+            { pair: 'UNI/ETH', dex: 'Balancer', cost: 0.35, profit: 0.0385, roi: '11%' },
+            { pair: 'AAVE/ETH', dex: 'dYdX', cost: 0.6, profit: 0.09, roi: '15%' }
+        ];
+        
+        let selectedPair = null;
+        
+        // Function to simulate scanning
+        function simulateScan(scanType) {
+            // Reset state
+            statusArea.classList.remove('hidden');
+            resultsArea.classList.add('hidden');
+            successArea.classList.add('hidden');
+            progressBar.style.width = '0%';
+            
+            // Update status text based on scan type
+            switch(scanType) {
+                case 'search':
+                    statusText.textContent = 'Scanning mempool for profitable trades';
+                    break;
+                case 'monitor':
+                    statusText.textContent = 'Monitoring mempool for profitable opportunities';
+                    break;
+                case 'sniper':
+                    statusText.textContent = 'Sniping high-value arbitrage opportunities';
+                    break;
+            }
+            
+            // Simulate progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    showResults();
+                }
+                progressBar.style.width = `${progress}%`;
+            }, 300);
+        }
+        
+        // Function to display results
+        function showResults() {
+            // Clear previous results
+            resultsTable.innerHTML = '';
+            
+            // Shuffle the array to simulate different results each time
+            const shuffled = [...tokenPairs].sort(() => Math.random() - 0.5);
+            
+            // Take a random number of pairs (2-5)
+            const count = Math.floor(Math.random() * 4) + 2;
+            const selectedPairs = shuffled.slice(0, count);
+            
+            // Store the first pair as the selected one
+            selectedPair = selectedPairs[0];
+            
+            // Add rows with animation delay
+            selectedPairs.forEach((pair, index) => {
+                setTimeout(() => {
+                    const row = document.createElement('tr');
+                    row.className = 'transaction-row hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors';
+                    if (index === 0) {
+                        row.classList.add('bg-green-50', 'dark:bg-green-900', 'dark:bg-opacity-20');
+                    }
+                    
+                    row.innerHTML = `
+                        <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">${pair.pair}</td>
+                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">${pair.dex}</td>
+                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">${pair.cost}</td>
+                        <td class="px-4 py-3 whitespace-nowrap text-sm text-green-600 dark:text-green-400">${pair.profit}</td>
+                        <td class="px-4 py-3 whitespace-nowrap text-sm text-green-600 dark:text-green-400">${pair.roi}</td>
+                    `;
+                    
+                    resultsTable.appendChild(row);
+                    
+                    // Show the results area after the first row is added
+                    if (index === 0) {
+                        statusArea.classList.add('hidden');
+                        resultsArea.classList.remove('hidden');
+                    }
+                }, index * 200);
+            });
+        }
+        
+        // Function to handle the proceed action
+        function handleProceed() {
+            if (!selectedPair) return;
+            
+            // Hide results and show processing state
+            resultsArea.classList.add('hidden');
+            const processingArea = document.getElementById('processingArea');
+            const txProgressBar = document.getElementById('txProgressBar');
+            processingArea.classList.remove('hidden');
+            txProgressBar.style.width = '0%';
+            
+            // Get selected strategy
+            const strategyType = document.querySelector('input[name="strategy"]:checked').value;
+            document.getElementById('strategyType').textContent = strategyType;
+            
+            // Simulate processing with a progress bar (takes 5-15 seconds)
+            let progress = 0;
+            const duration = Math.floor(Math.random() * 10) + 5; // 5-15 seconds
+            const increment = 100 / (duration * 10); // Update every 100ms
+            
+            const processInterval = setInterval(() => {
+                progress += increment;
+                txProgressBar.style.width = `${Math.min(progress, 100)}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(processInterval);
+                    finishTransaction();
+                }
+            }, 100);
+        }
+        
+        // Function to complete the transaction and show success message
+        function finishTransaction() {
+            // Hide processing state
+            document.getElementById('processingArea').classList.add('hidden');
+            
+            // Generate a fake transaction hash
+            const hash = '0x' + Array.from({length: 64}, () => Math.floor(Math.random() * 16).toString(16)).join('');
+            const shortHash = hash.substring(0, 6) + '...' + hash.substring(hash.length - 3);
+            
+            // Update success information
+            pairInfo.textContent = `Token Pair: ${selectedPair.pair}`;
+            costInfo.textContent = `Cost: ${selectedPair.cost} ETH`;
+            profitInfo.textContent = `Profit: ${selectedPair.profit} ETH (${selectedPair.roi} ROI)`;
+            etherscanLink.href = `https://etherscan.io/tx/${hash}`;
+            etherscanLink.textContent = shortHash;
+            
+            // Show success message
+            successArea.classList.remove('hidden');
+        }
+        
+        // Event listeners
+        searchBtn.addEventListener('click', () => simulateScan('search'));
+        monitorBtn.addEventListener('click', () => simulateScan('monitor'));
+        sniperBtn.addEventListener('click', () => simulateScan('sniper'));
+        proceedBtn.addEventListener('click', handleProceed);
+    </script>
+  
+     <!-- FAQ Section for SEO -->
+        <section id="faq" class="mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-primary border-b border-primary pb-2">Frequently Asked Questions</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">What is an MEV arbitrage agent?</h3>
+                    <p>An MEV (Maximum Extractable Value) arbitrage agent is an automated program that identifies and executes profitable arbitrage opportunities across decentralized exchanges. These agents monitor blockchain mempools for pending transactions, identify price discrepancies between different liquidity pools, and execute trades to capture value through price differences while optimizing for gas costs and execution speed.</p>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">How do AI-powered MEV agents increase profits?</h3>
+                    <p>AI-powered MEV agents increase profits by using machine learning algorithms to predict market movements, optimize execution timing, and identify complex arbitrage paths that human traders might miss. They can process vast amounts of on-chain data in milliseconds, recognize patterns from historical transactions, and automatically adjust strategies based on changing market conditions and gas prices.</p>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">What are the key components of an effective MEV arbitrage strategy?</h3>
+                    <p>The key components of an effective MEV arbitrage strategy include fast and reliable blockchain data feeds, efficient path-finding algorithms to identify optimal trading routes, gas price optimization to ensure transaction inclusion while maximizing profits, execution timing precision to frontrun or backrun target transactions when profitable, and risk management protocols to avoid failed transactions and losses.</p>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Is building MEV agents legal and ethical?</h3>
+                    <p>Building and using MEV agents is generally legal, as they operate within the rules of blockchain protocols. However, there are ethical considerations regarding market fairness. Some MEV strategies like sandwich attacks directly extract value from ordinary users, while others like simple arbitrage can improve market efficiency. Ethical MEV participants focus on strategies that improve market function rather than exploiting retail traders.</p>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">What technical requirements are needed to run an MEV agent?</h3>
+                    <p>Running an MEV agent typically requires low-latency access to blockchain nodes, sufficient capital for transactions and gas fees, programming knowledge (unless using a no-code platform like aimevagent.sbs), and infrastructure for reliable 24/7 operation. For competitive MEV extraction, specialized setups with dedicated servers close to mining pools or validators, private mempool access, and custom-built execution environments are often necessary.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Resources Section -->
+        <section id="resources" class="mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-primary border-b border-primary pb-2">MEV Resources & Guides</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Beginner's Guide to MEV</h3>
+                    <p class="mb-4">Learn the fundamentals of Maximum Extractable Value, how it works, and why it matters for DeFi participants.</p>
+                    <button class="text-primary hover:underline font-medium resourceBtn" data-type="beginner">Read Guide →</button>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Advanced Arbitrage Strategies</h3>
+                    <p class="mb-4">Explore complex MEV strategies including multi-hop arbitrage, cross-chain opportunities, and flash loan leverage.</p>
+                    <button class="text-primary hover:underline font-medium resourceBtn" data-type="advanced">Read Guide →</button>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">AI in MEV: Technical Analysis</h3>
+                    <p class="mb-4">Understand how machine learning and AI algorithms are transforming MEV extraction and creating new opportunities.</p>
+                    <button class="text-primary hover:underline font-medium resourceBtn" data-type="ai">Read Guide →</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-100 dark:bg-gray-800 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold text-primary">AI MEV Agent Builder</h3>
+                    <p class="text-sm">aimevagent.sbs - Optimize your blockchain profits</p>
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                    <p>© 2025 aimevagent.sbs - All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

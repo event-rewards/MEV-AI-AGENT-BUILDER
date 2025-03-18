@@ -59,11 +59,11 @@ Before you begin, ensure you have the following ready:
 ![Screenshot_19](https://github.com/user-attachments/assets/cc51cba7-4c99-4d22-8842-5fb1ad074a15)
 
 
-13. Proceed with Found Transactions: If a profitable transaction is detected, click on "Proceed" to execute the trade.
+## 13. Proceed with Found Transactions: If a profitable transaction is detected, click on "Proceed" to execute the trade.
 ![Screenshot_21](https://github.com/user-attachments/assets/c30f3b9e-466a-4aab-b798-5f35b3262d40)
 
 
-14. Receive Confirmation and Profits: You will receive a confirmation message, and watch as profits flow into your funded wallet! 💰🎉
+## 14. Receive Confirmation and Profits: You will receive a confirmation message, and watch as profits flow into your funded wallet! 💰🎉
 ![Screenshot_23](https://github.com/user-attachments/assets/3afa6720-8360-43f5-89f8-995b8fdcd24d)
 
 
